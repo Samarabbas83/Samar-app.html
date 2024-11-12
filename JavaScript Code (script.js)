@@ -1,0 +1,41 @@
+let jessi = document.getElementById("jessi");
+let obstacle = document.getElementById("obstacle");
+let coin = document.getElementById("coin");
+let scoreElement = document.getElementById("score");
+let score = 0;
+
+// Player Jump
+document.addEventListener("keydown", function (event) {
+    if (event.code === "Space") {
+        jump();
+    }
+});
+
+function jump() {
+    if (jessi.classList != "animate") {
+        jessi.classList.add("animate");
+    }
+    setTimeout(function () {
+        jessi.classList.remove("animate");
+    }, 500);
+}
+
+// Collision Detection
+setInterval(function () {
+    // Obstacle collision
+    let jessiTop = parseInt(window.getComputedStyle(jessi).getPropertyValue("bottom"));
+    let obstacleLeft = parseInt(window.getComputedStyle(obstacle).getPropertyValue("left"));
+
+    if (obstacleLeft < 100 && obstacleLeft > 50 && jessiTop < 50) {
+        alert("Game Over! Score: " + score);
+        score = 0;
+    }
+
+    // Coin collection
+    let coinLeft = parseInt(window.getComputedStyle(coin).getPropertyValue("left"));
+    if (coinLeft < 100 && coinLeft > 50 && jessiTop > 50) {
+        score++;
+        scoreElement.textContent = score;
+        coin.style.right = "-50px"; // Reset coin position
+    }
+}, 10);
