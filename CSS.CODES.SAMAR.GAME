@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #e6f7ff;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.player {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: #007acc;
+    border-radius: 50%;
+}
+
+.obstacle {
+    position: absolute;
+    bottom: 20px;
+    right: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: #e74c3c;
+    animation: moveObstacle 2s linear infinite;
+}
+
+.coin {
+    position: absolute;
+    bottom: 80px;
+    right: -50px;
+    width: 30px;
+    height: 30px;
+    background-color: gold;
+    border-radius: 50%;
+    animation: moveCoin 3s linear infinite;
+}
+
+.score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+}
+
+@keyframes moveObstacle {
+    0% { right: -50px; }
+    100% { right: 650px; }
+}
+
+@keyframes moveCoin {
+    0% { right: -50px; }
+    100% { right: 650px; }
+}
